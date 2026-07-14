@@ -1,4 +1,5 @@
 #Importing libraries and modules
+from flask import Flask
 import io
 import os
 import discord
@@ -9,6 +10,7 @@ import re
 import random
 import spotipy
 import requests
+import threading
 from bs4 import BeautifulSoup
 from yt_dlp import YoutubeDL
 from gtts import gTTS
@@ -17,6 +19,22 @@ from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv
 from datetime import timedelta
+
+#tricking into thinking its a web
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = threading.Thread(target=run)
+    t.start()
+
+keep_alive()
 
 #Environment variables for tokens and other sensitive data
 load_dotenv()
