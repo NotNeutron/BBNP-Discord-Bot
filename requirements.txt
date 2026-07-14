@@ -1,0 +1,8 @@
+discord.py
+PyNaCl
+spotipy
+requests
+beautifulsoup4
+yt-dlp
+gTTS
+python-dotenv
